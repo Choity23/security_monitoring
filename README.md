@@ -1,147 +1,280 @@
-# security_monitoring
+# Ubuntu VMware Setup and PuTTY SSH Access
 
-## Screenshot Walkthrough
+Step-by-step report created from the screenshots in this repository.
 
-1. Ubuntu Google search result
+| Item | Details |
+| --- | --- |
+| Source file | hio.zip |
+| Screenshots reviewed | 36 |
+| Main tools shown | Ubuntu ISO, VMware Workstation Pro 17, Ubuntu installer, OpenSSH Server, PuTTY |
+| Example VM IP shown | 192.168.119.129. Use your own VM IP if different. |
 
-   ![01 Ubuntu Google search result](01_ubuntu_google_search_result.png)
+> Important note: The screenshots show a virtual machine installation workflow. Any disk formatting step inside VMware applies to the virtual disk created for the VM. Do not format your real Windows drive.
 
-2. Ubuntu release directory desktop AMD64 ISO
+## Quick Workflow Overview
 
-   ![02 Ubuntu release directory desktop AMD64 ISO](02_ubuntu_release_directory_desktop_amd64_iso.png)
+| No. | Step | What to do |
+| --- | --- | --- |
+| 1 | Ubuntu ISO | Download Ubuntu 22.04 LTS AMD64 ISO from an official Ubuntu source. |
+| 2 | VMware VM | Create a new Typical VM, install OS later, Linux/Ubuntu, 20 GB disk. |
+| 3 | ISO and Hardware | Attach ISO under CD/DVD, set RAM/CPU as needed, power on VM. |
+| 4 | Install Ubuntu | Language, keyboard, network, storage, user profile, OpenSSH Server, reboot. |
+| 5 | Find IP | Log in to Ubuntu and run `ip a` or `hostname -I` to get the VM IP address. |
+| 6 | PuTTY | Download PuTTY, enter VM IP, SSH port 22, login with Ubuntu credentials. |
 
-3. VMware CD/DVD ISO browser with Ubuntu ISO selected
+## Useful Ubuntu Commands
 
-   ![03 VMware CD/DVD ISO browser with Ubuntu ISO selected](03_vmware_cd_dvd_iso_browser_ubuntu_iso_selected.png)
+```bash
+# Show IP address
+ip a
+hostname -I
 
-4. VMware Workstation home before creating VM
+# Check SSH server status
+sudo systemctl status ssh
 
-   ![04 VMware Workstation home before creating VM](04_vmware_workstation_home_before_creating_vm.png)
+# Install SSH server if it was not selected during setup
+sudo apt update
+sudo apt install openssh-server -y
+sudo systemctl enable --now ssh
+```
 
-5. New Virtual Machine Wizard typical configuration
+## 1. Download Ubuntu ISO
 
-   ![05 New Virtual Machine Wizard typical configuration](05_new_virtual_machine_wizard_typical_configuration.png)
+Open a browser and search for Ubuntu 22.04 LTS. Use an official Ubuntu release page or `releases.ubuntu.com`.
 
-6. Guest OS install later
+From the release directory, download the desktop or server AMD64 ISO file. The screenshots show Ubuntu 22.04.5 LTS AMD64 ISO selected for the VM.
 
-   ![06 Guest OS install later](06_guest_os_install_later.png)
+**Screenshot 1:** Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page.
 
-7. Select Linux Ubuntu guest OS
+![Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page](01_ubuntu_google_search_result.png)
 
-   ![07 Select Linux Ubuntu guest OS](07_select_linux_ubuntu_guest_os.png)
+**Screenshot 2:** Ubuntu release directory showing the 22.04.5 desktop AMD64 ISO file.
 
-8. Name VM Ubuntu 2 and location
+![Ubuntu release directory showing the 22.04.5 desktop AMD64 ISO file](02_ubuntu_release_directory_desktop_amd64_iso.png)
 
-   ![08 Name VM Ubuntu 2 and location](08_name_vm_ubuntu_2_and_location.png)
+## 2. Create a New Virtual Machine in VMware
 
-9. Specify disk capacity 20 GB split
+Open VMware Workstation Pro and choose **Create a New Virtual Machine**. Select **Typical (recommended)** for a normal Ubuntu installation.
 
-   ![09 Specify disk capacity 20 GB split](09_specify_disk_capacity_20gb_split.png)
+**Screenshot 4:** VMware Workstation Pro home screen before creating the virtual machine.
 
-10. Ready to create VM summary
+![VMware Workstation Pro home screen before creating the virtual machine](04_vmware_workstation_home_before_creating_vm.png)
 
-    ![10 Ready to create VM summary](10_ready_to_create_vm_summary.png)
+**Screenshot 5:** New Virtual Machine Wizard, Typical configuration selected.
 
-11. Created VM summary settings
+![New Virtual Machine Wizard, Typical configuration selected](05_new_virtual_machine_wizard_typical_configuration.png)
 
-    ![11 Created VM summary settings](11_created_vm_summary_settings.png)
+Select **I will install the operating system later** so the VM is created first. Then select **Linux** as the guest operating system and **Ubuntu** as the version.
 
-12. Virtual machine settings memory configuration
+**Screenshot 6:** Guest operating system installation, choose to install the OS later.
 
-    ![12 Virtual machine settings memory configuration](12_virtual_machine_settings_memory_configuration.png)
+![Guest operating system installation, choose to install the OS later](06_guest_os_install_later.png)
 
-13. CD/DVD ISO selection browse button
+**Screenshot 7:** Select Linux as the guest OS and Ubuntu as the version.
 
-    ![13 CD/DVD ISO selection browse button](13_cd_dvd_iso_selection_browse_button.png)
+![Select Linux as the guest OS and Ubuntu as the version](07_select_linux_ubuntu_guest_os.png)
 
-14. CD/DVD Ubuntu ISO attached
+Name the VM, choose where it will be stored, set the disk size to 20 GB, and keep **Split virtual disk into multiple files** selected. Finish the wizard.
 
-    ![14 CD/DVD Ubuntu ISO attached](14_cd_dvd_ubuntu_iso_attached.png)
+**Screenshot 8:** Name the VM Ubuntu (2) and choose the VM storage location.
 
-15. Installer language selection
+![Name the VM Ubuntu (2) and choose the VM storage location](08_name_vm_ubuntu_2_and_location.png)
 
-    ![15 Installer language selection](15_installer_language_selection.png)
+**Screenshot 9:** Specify disk capacity, 20 GB, split into multiple files.
 
-16. Keyboard layout English US
+![Specify disk capacity, 20 GB, split into multiple files](09_specify_disk_capacity_20gb_split.png)
 
-    ![16 Keyboard layout English US](16_keyboard_layout_english_us.png)
+**Screenshot 10:** Ready to create the virtual machine summary page.
 
-17. Installer network connection
+![Ready to create the virtual machine summary page](10_ready_to_create_vm_summary.png)
 
-    ![17 Installer network connection](17_installer_network_connection.png)
+**Screenshot 11:** Created VM summary in VMware showing the virtual machine settings.
 
-18. Proxy address blank
+![Created VM summary in VMware showing the virtual machine settings](11_created_vm_summary_settings.png)
 
-    ![18 Proxy address blank](18_proxy_address_blank.png)
+## 3. Attach Ubuntu ISO and Adjust VM Hardware
 
-19. Ubuntu archive mirror configuration
+Open VM Settings. Increase memory if needed, for example 4 GB RAM for a smoother installation. Open CD/DVD settings, browse for the downloaded Ubuntu ISO, and make sure **Connect at power on** is enabled.
 
-    ![19 Ubuntu archive mirror configuration](19_ubuntu_archive_mirror_configuration.png)
+**Screenshot 12:** Virtual Machine Settings, memory configuration screen.
 
-20. Guided storage layout
+![Virtual Machine Settings, memory configuration screen](12_virtual_machine_settings_memory_configuration.png)
 
-    ![20 Guided storage layout](20_guided_storage_layout.png)
+**Screenshot 13:** Virtual Machine Settings, CD/DVD ISO selection and Browse button.
 
-21. Storage confirmation warning
+![Virtual Machine Settings, CD/DVD ISO selection and Browse button](13_cd_dvd_iso_selection_browse_button.png)
 
-    ![21 Storage confirmation warning](21_storage_confirmation_warning.png)
+**Screenshot 3:** VMware CD/DVD ISO browser with the downloaded Ubuntu ISO selected.
 
-22. Profile setup username password
+![VMware CD/DVD ISO browser with the downloaded Ubuntu ISO selected](03_vmware_cd_dvd_iso_browser_ubuntu_iso_selected.png)
 
-    ![22 Profile setup username password](22_profile_setup_username_password.png)
+**Screenshot 14:** Virtual Machine Settings after attaching the Ubuntu ISO to CD/DVD.
 
-23. Skip Ubuntu Pro
+![Virtual Machine Settings after attaching the Ubuntu ISO to CD/DVD](14_cd_dvd_ubuntu_iso_attached.png)
 
-    ![23 Skip Ubuntu Pro](23_skip_ubuntu_pro.png)
+## 4. Install Ubuntu Server/Desktop in the VM
 
-24. SSH setup OpenSSH server
+Power on the VM. Choose language and keyboard layout. For a normal setup, English and English (US) are fine.
 
-    ![24 SSH setup OpenSSH server](24_ssh_setup_openssh_server.png)
+**Screenshot 15:** Ubuntu installer language selection screen.
 
-25. Featured server snaps
+![Ubuntu installer language selection screen](15_installer_language_selection.png)
 
-    ![25 Featured server snaps](25_featured_server_snaps.png)
+**Screenshot 16:** Keyboard layout selection, English (US).
 
-26. Ubuntu server installing packages
+![Keyboard layout selection, English (US)](16_keyboard_layout_english_us.png)
 
-    ![26 Ubuntu server installing packages](26_ubuntu_server_installing_packages.png)
+Continue through networking, proxy, and mirror settings. Leave proxy blank unless your network requires one. Keep the default Ubuntu mirror unless you need another mirror.
 
-27. Installer finished ready to reboot
+**Screenshot 17:** Installer network connection screen.
 
-    ![27 Installer finished ready to reboot](27_installer_finished_ready_to_reboot.png)
+![Installer network connection screen](17_installer_network_connection.png)
 
-28. VMware CD/DVD disconnect ISO after install
+**Screenshot 18:** Proxy address screen, left blank for normal installation.
 
-    ![28 VMware CD/DVD disconnect ISO after install](28_vmware_cd_dvd_disconnect_iso_after_install.png)
+![Proxy address screen, left blank for normal installation](18_proxy_address_blank.png)
 
-29. Ubuntu terminal IP information after install
+**Screenshot 19:** Ubuntu archive mirror configuration screen.
 
-    ![29 Ubuntu terminal IP information after install](29_ubuntu_terminal_ip_information_after_install.png)
+![Ubuntu archive mirror configuration screen](19_ubuntu_archive_mirror_configuration.png)
 
-30. Ubuntu login first terminal welcome
+For storage, choose guided storage using the whole virtual disk. Confirm the destructive action warning because this affects only the virtual disk, not your Windows disk.
 
-    ![30 Ubuntu login first terminal welcome](30_ubuntu_login_first_terminal_welcome.png)
+**Screenshot 20:** Guided storage layout screen.
 
-31. Ubuntu terminal IP and SSH network status
+![Guided storage layout screen](20_guided_storage_layout.png)
 
-    ![31 Ubuntu terminal IP and SSH network status](31_ubuntu_terminal_ip_and_ssh_network_status.png)
+**Screenshot 21:** Storage confirmation warning before formatting disk.
 
-32. PuTTY official download page
+![Storage confirmation warning before formatting disk](21_storage_confirmation_warning.png)
 
-    ![32 PuTTY official download page](32_putty_official_download_page.png)
+Create your profile: name, server name, username, and password. Skip Ubuntu Pro unless you need it. On the SSH screen, install OpenSSH Server so PuTTY can connect later.
 
-33. Ubuntu terminal network IP check for PuTTY
+**Screenshot 22:** Profile setup screen for name, server name, username, and password.
 
-    ![33 Ubuntu terminal network IP check for PuTTY](33_ubuntu_terminal_network_ip_check_for_putty.png)
+![Profile setup screen for name, server name, username, and password](22_profile_setup_username_password.png)
 
-34. PuTTY configuration IP port save open
+**Screenshot 23:** Upgrade to Ubuntu Pro screen, skipped.
 
-    ![34 PuTTY configuration IP port save open](34_putty_configuration_ip_port_save_open.png)
+![Upgrade to Ubuntu Pro screen, skipped](23_skip_ubuntu_pro.png)
 
-35. PuTTY SSH login username password
+**Screenshot 24:** SSH setup screen where OpenSSH Server can be installed.
 
-    ![35 PuTTY SSH login username password](35_putty_ssh_login_username_password.png)
+![SSH setup screen where OpenSSH Server can be installed](24_ssh_setup_openssh_server.png)
 
-36. Successful PuTTY SSH login
+Skip optional snaps unless needed. Wait for installation to complete, then reboot. After reboot, disconnect the ISO if VMware still boots into the installer.
 
-    ![36 Successful PuTTY SSH login](36_successful_putty_ssh_login.png)
+**Screenshot 25:** Featured server snaps screen, continue without selecting optional snaps.
+
+![Featured server snaps screen, continue without selecting optional snaps](25_featured_server_snaps.png)
+
+**Screenshot 26:** Ubuntu Server installing packages and system components.
+
+![Ubuntu Server installing packages and system components](26_ubuntu_server_installing_packages.png)
+
+**Screenshot 27:** Installer finished and ready to reboot.
+
+![Installer finished and ready to reboot](27_installer_finished_ready_to_reboot.png)
+
+**Screenshot 28:** VMware CD/DVD setting after installation; ISO can be disconnected.
+
+![VMware CD/DVD setting after installation; ISO can be disconnected](28_vmware_cd_dvd_disconnect_iso_after_install.png)
+
+## 5. First Login and Network/IP Check in Ubuntu
+
+Log in with the Ubuntu username and password you created. Check the VM IP address. In the screenshots the VM IP appears as `192.168.119.129`. Your IP may be different.
+
+**Screenshot 29:** Ubuntu terminal showing IP information after installation.
+
+![Ubuntu terminal showing IP information after installation](29_ubuntu_terminal_ip_information_after_install.png)
+
+**Screenshot 30:** Ubuntu login and first terminal welcome message.
+
+![Ubuntu login and first terminal welcome message](30_ubuntu_login_first_terminal_welcome.png)
+
+**Screenshot 31:** Ubuntu terminal showing commands/output for checking IP and SSH/network status.
+
+![Ubuntu terminal showing commands/output for checking IP and SSH/network status](31_ubuntu_terminal_ip_and_ssh_network_status.png)
+
+**Screenshot 33:** Ubuntu terminal with network/IP check; useful before PuTTY connection.
+
+![Ubuntu terminal with network/IP check; useful before PuTTY connection](33_ubuntu_terminal_network_ip_check_for_putty.png)
+
+## 6. Download and Configure PuTTY on Windows
+
+On Windows, open the official PuTTY download page and download PuTTY. After installation, open PuTTY Configuration.
+
+**Screenshot 32:** PuTTY official download page with Download PuTTY highlighted.
+
+![PuTTY official download page with Download PuTTY highlighted](32_putty_official_download_page.png)
+
+In PuTTY, enter the Ubuntu VM IP address in **Host Name**, keep **Port 22**, choose **SSH**, optionally save the session name, and click **Open**.
+
+**Screenshot 34:** PuTTY Configuration: enter Ubuntu IP, port 22, save session, then Open.
+
+![PuTTY Configuration: enter Ubuntu IP, port 22, save session, then Open](34_putty_configuration_ip_port_save_open.png)
+
+When the SSH terminal opens, log in with the Ubuntu username and password. The successful login screenshot confirms that PuTTY can access Ubuntu remotely.
+
+**Screenshot 35:** PuTTY SSH login screen asking for Ubuntu username/password.
+
+![PuTTY SSH login screen asking for Ubuntu username/password](35_putty_ssh_login_username_password.png)
+
+**Screenshot 36:** Successful PuTTY SSH login to Ubuntu terminal.
+
+![Successful PuTTY SSH login to Ubuntu terminal](36_successful_putty_ssh_login.png)
+
+## Troubleshooting Checklist
+
+| Problem | Fix |
+| --- | --- |
+| PuTTY connection timed out | Check that the VM is powered on, Ubuntu IP is correct, network adapter is NAT/bridged, and host firewall is not blocking. |
+| Connection refused | OpenSSH Server may not be installed/running. In Ubuntu run: `sudo apt install openssh-server -y && sudo systemctl enable --now ssh` |
+| Wrong password | Use the Ubuntu account password created during installation. PuTTY does not show password characters while typing. |
+| IP changed after reboot | Run `hostname -I` again in Ubuntu and update the PuTTY Host Name. |
+| Installer starts again after reboot | Disconnect the ISO from VM Settings > CD/DVD or uncheck **Connect at power on**. |
+
+## Final Result
+
+The final screenshot confirms PuTTY successfully connected to the Ubuntu VM over SSH. After this, you can manage the Ubuntu server from Windows using PuTTY.
+
+## Appendix: All Screenshots Reviewed
+
+| # | Screenshot file | Report note |
+| --- | --- | --- |
+| 1 | `01_ubuntu_google_search_result.png` | Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page. |
+| 2 | `02_ubuntu_release_directory_desktop_amd64_iso.png` | Ubuntu release directory showing the 22.04.5 desktop AMD64 ISO file. |
+| 3 | `03_vmware_cd_dvd_iso_browser_ubuntu_iso_selected.png` | VMware CD/DVD ISO browser with the downloaded Ubuntu ISO selected. |
+| 4 | `04_vmware_workstation_home_before_creating_vm.png` | VMware Workstation Pro home screen before creating the virtual machine. |
+| 5 | `05_new_virtual_machine_wizard_typical_configuration.png` | New Virtual Machine Wizard, Typical configuration selected. |
+| 6 | `06_guest_os_install_later.png` | Guest operating system installation, choose to install the OS later. |
+| 7 | `07_select_linux_ubuntu_guest_os.png` | Select Linux as the guest OS and Ubuntu as the version. |
+| 8 | `08_name_vm_ubuntu_2_and_location.png` | Name the VM Ubuntu (2) and choose the VM storage location. |
+| 9 | `09_specify_disk_capacity_20gb_split.png` | Specify disk capacity, 20 GB, split into multiple files. |
+| 10 | `10_ready_to_create_vm_summary.png` | Ready to create the virtual machine summary page. |
+| 11 | `11_created_vm_summary_settings.png` | Created VM summary in VMware showing the virtual machine settings. |
+| 12 | `12_virtual_machine_settings_memory_configuration.png` | Virtual Machine Settings, memory configuration screen. |
+| 13 | `13_cd_dvd_iso_selection_browse_button.png` | Virtual Machine Settings, CD/DVD ISO selection and Browse button. |
+| 14 | `14_cd_dvd_ubuntu_iso_attached.png` | Virtual Machine Settings after attaching the Ubuntu ISO to CD/DVD. |
+| 15 | `15_installer_language_selection.png` | Ubuntu installer language selection screen. |
+| 16 | `16_keyboard_layout_english_us.png` | Keyboard layout selection, English (US). |
+| 17 | `17_installer_network_connection.png` | Installer network connection screen. |
+| 18 | `18_proxy_address_blank.png` | Proxy address screen, left blank for normal installation. |
+| 19 | `19_ubuntu_archive_mirror_configuration.png` | Ubuntu archive mirror configuration screen. |
+| 20 | `20_guided_storage_layout.png` | Guided storage layout screen. |
+| 21 | `21_storage_confirmation_warning.png` | Storage confirmation warning before formatting disk. |
+| 22 | `22_profile_setup_username_password.png` | Profile setup screen for name, server name, username, and password. |
+| 23 | `23_skip_ubuntu_pro.png` | Upgrade to Ubuntu Pro screen, skipped. |
+| 24 | `24_ssh_setup_openssh_server.png` | SSH setup screen where OpenSSH Server can be installed. |
+| 25 | `25_featured_server_snaps.png` | Featured server snaps screen, continue without selecting optional snaps. |
+| 26 | `26_ubuntu_server_installing_packages.png` | Ubuntu Server installing packages and system components. |
+| 27 | `27_installer_finished_ready_to_reboot.png` | Installer finished and ready to reboot. |
+| 28 | `28_vmware_cd_dvd_disconnect_iso_after_install.png` | VMware CD/DVD setting after installation; ISO can be disconnected. |
+| 29 | `29_ubuntu_terminal_ip_information_after_install.png` | Ubuntu terminal showing IP information after installation. |
+| 30 | `30_ubuntu_login_first_terminal_welcome.png` | Ubuntu login and first terminal welcome message. |
+| 31 | `31_ubuntu_terminal_ip_and_ssh_network_status.png` | Ubuntu terminal showing commands/output for checking IP and SSH/network status. |
+| 32 | `32_putty_official_download_page.png` | PuTTY official download page with Download PuTTY highlighted. |
+| 33 | `33_ubuntu_terminal_network_ip_check_for_putty.png` | Ubuntu terminal with network/IP check; useful before PuTTY connection. |
+| 34 | `34_putty_configuration_ip_port_save_open.png` | PuTTY Configuration: enter Ubuntu IP, port 22, save session, then Open. |
+| 35 | `35_putty_ssh_login_username_password.png` | PuTTY SSH login screen asking for Ubuntu username/password. |
+| 36 | `36_successful_putty_ssh_login.png` | Successful PuTTY SSH login to Ubuntu terminal. |
