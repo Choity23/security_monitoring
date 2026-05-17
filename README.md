@@ -282,20 +282,15 @@ When the SSH terminal opens, log in with the Ubuntu username and password. The s
 
 **Fig-36:** Successful PuTTY SSH login to Ubuntu terminal.
 
-![Successful PuTTY SSH login to Ubuntu terminal](37.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
+![ubntu gui search](37.png)
+![download1](38.png)
+![download2](39.png)
+![wazuh install code](40.png)
+![wazuh connection info](41.png)
+![wazuh ip find](42.png)
+![wazuh web1](43.png)
+![wazuh web 2](44.png)
+![wazuh web 3](45.png)
 
 
 ## Troubleshooting Checklist
