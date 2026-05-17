@@ -353,6 +353,74 @@ echo "========================================"
 
 **Fig-45:** Boom!Dashboard comes.
 
+## 7. WinSCP setup.
+```
+1. Go to: https://winscp.net/
+2. Click green "Download WinSCP" button
+3. Run the installer
+4. Choose "Typical installation"
+5. Interface: "Commander" (dual-panel)
+6. Click "Install" → "Finish"
+```
+![win1](46.png)
+
+**Fig-46:** Got wazuh login page.
+
+![win22](47.png)
+
+**Fig-47:** Got wazuh login page.
+
+![win3](48.png)
+
+**Fig-48:** Got wazuh login page.
+
+![wazuh web 2](49.png)
+
+**Fig-49:** Got wazuh login page.
+
+![win4](50.png)
+
+**Fig-50:** Got wazuh login page.
+
+![win5](51.png)
+
+**Fig-51:** Got wazuh login page.
+
+![wazuh web 2](52.png)
+
+**Fig-52:** Got wazuh login page.
+
+![win6](53.png)
+
+**Fig-53:** Got wazuh login page.
+
+![win7](54.png)
+
+**Fig-54:** Got wazuh login page.
+
+![win8](55.png)
+
+**Fig-55:** Got wazuh login page.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Troubleshooting Checklist
 
 | Problem | Fix |
