@@ -364,8 +364,6 @@ echo "========================================"
 ```
 ![win1](46.png)
 
-**Fig-46:** Got wazuh login page.
-
 ![win22](47.png)
 
 ![win3](48.png)
@@ -373,27 +371,27 @@ echo "========================================"
 
 ![win4](50.png)
 
-**Fig-50:** Got wazuh login page.
+
 
 ![win5](51.png)
 
-**Fig-51:** Got wazuh login page.
+
 
 ![wazuh web 2](52.png)
 
-**Fig-52:** Got wazuh login page.
+
 
 ![win6](53.png)
 
-**Fig-53:** Got wazuh login page.
+
 
 ![win7](54.png)
 
-**Fig-54:** Got wazuh login page.
+
 
 ![win8](55.png)
 
-**Fig-55:** Got wazuh login page.
+
 
 
 
