@@ -1,15 +1,5 @@
 # Ubuntu VMware Setup and PuTTY SSH Access
 
-Step-by-step report created from the screenshots in this repository.
-
-| Item | Details |
-| --- | --- |
-| Source file | hio.zip |
-| Screenshots reviewed | 36 |
-| Main tools shown | Ubuntu ISO, VMware Workstation Pro 17, Ubuntu installer, OpenSSH Server, PuTTY |
-| Example VM IP shown | 192.168.119.129. Use your own VM IP if different. |
-
-> Important note: The screenshots show a virtual machine installation workflow. Any disk formatting step inside VMware applies to the virtual disk created for the VM. Do not format your real Windows drive.
 
 ## Quick Workflow Overview
 
