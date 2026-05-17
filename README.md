@@ -56,6 +56,8 @@ Open VMware Workstation Pro and choose **Create a New Virtual Machine**. Select 
 
 
 ![New Virtual Machine Wizard, Typical configuration selected](05_new_virtual_machine_wizard_typical_configuration.png)
+
+
 **Fig-4:** New Virtual Machine Wizard, Typical configuration selected.
 
 
