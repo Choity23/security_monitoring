@@ -282,6 +282,21 @@ When the SSH terminal opens, log in with the Ubuntu username and password. The s
 
 **Fig-36:** Successful PuTTY SSH login to Ubuntu terminal.
 
+![Successful PuTTY SSH login to Ubuntu terminal](37.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Troubleshooting Checklist
 
