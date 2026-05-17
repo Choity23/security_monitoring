@@ -64,10 +64,12 @@ Select **I will install the operating system later** so the VM is created first.
 
 
 ![Guest operating system installation, choose to install the OS later](06_guest_os_install_later.png)
+
 **Fig-5:** Guest operating system installation, choose to install the OS later.
 
 
 ![Select Linux as the guest OS and Ubuntu as the version](07_select_linux_ubuntu_guest_os.png)
+
 **Fig-6:** Select Linux as the guest OS and Ubuntu as the version.
 
 Name the VM, choose where it will be stored, set the disk size to 20 GB, and keep **Split virtual disk into multiple files** selected. Finish the wizard.
@@ -75,20 +77,24 @@ Name the VM, choose where it will be stored, set the disk size to 20 GB, and kee
 
 
 ![Name the VM Ubuntu (2) and choose the VM storage location](08_name_vm_ubuntu_2_and_location.png)
+
 **Fig-7:**  Name the VM Ubuntu (2) and choose the VM storage location.
 
 
 
 ![Specify disk capacity, 20 GB, split into multiple files](09_specify_disk_capacity_20gb_split.png)
+
 **Fig-8:** Specify disk capacity, 20 GB, split into multiple files.
 
 
 ![Ready to create the virtual machine summary page](10_ready_to_create_vm_summary.png)
+
 **Fig-9:** Ready to create the virtual machine summary page.
 
 
 
 ![Created VM summary in VMware showing the virtual machine settings](11_created_vm_summary_settings.png)
+
 **Fig-10:** Created VM summary in VMware showing the virtual machine settings.
 
 
@@ -99,22 +105,26 @@ Open VM Settings. Increase memory if needed, for example 4 GB RAM for a smoother
 
 
 ![Virtual Machine Settings, memory configuration screen](12_virtual_machine_settings_memory_configuration.png)
+
 **Fig-11:** Virtual Machine Settings, memory configuration screen.
 
 
 
 ![Virtual Machine Settings, CD/DVD ISO selection and Browse button](13_cd_dvd_iso_selection_browse_button.png)
+ 
  **Fig-12:** Virtual Machine Settings, CD/DVD ISO selection and Browse button.
 
 
 
 
 ![VMware CD/DVD ISO browser with the downloaded Ubuntu ISO selected](03_vmware_cd_dvd_iso_browser_ubuntu_iso_selected.png)
+ 
  **Fig-13:** VMware CD/DVD ISO browser with the downloaded Ubuntu ISO selected.
 
 
 
 ![Virtual Machine Settings after attaching the Ubuntu ISO to CD/DVD](14_cd_dvd_ubuntu_iso_attached.png)
+ 
  **Fig-14:** Virtual Machine Settings after attaching the Ubuntu ISO to CD/DVD.
 
 ## 4. Install Ubuntu Server/Desktop in the VM
@@ -124,10 +134,12 @@ Power on the VM. Choose language and keyboard layout. For a normal setup, Englis
 
 
 ![Ubuntu installer language selection screen](15_installer_language_selection.png)
+
 **Fig-15:** Ubuntu installer language selection screen.
 
 
 ![Keyboard layout selection, English (US)](16_keyboard_layout_english_us.png)
+
 **Fig-16:** Keyboard layout selection, English (US).
 
 Continue through networking, proxy, and mirror settings. Leave proxy blank unless your network requires one. Keep the default Ubuntu mirror unless you need another mirror.
@@ -135,13 +147,16 @@ Continue through networking, proxy, and mirror settings. Leave proxy blank unles
 
 
 ![Installer network connection screen](17_installer_network_connection.png)
+
 **Fig-17:** Installer network connection screen.
 
 
 ![Proxy address screen, left blank for normal installation](18_proxy_address_blank.png)
+
 **Fig-18:** Proxy address screen, left blank for normal installation.
 
 ![Ubuntu archive mirror configuration screen](19_ubuntu_archive_mirror_configuration.png)
+
 **Fig-19:** Ubuntu archive mirror configuration screen.
 
 For storage, choose guided storage using the whole virtual disk. Confirm the destructive action warning because this affects only the virtual disk, not your Windows disk.
@@ -149,9 +164,11 @@ For storage, choose guided storage using the whole virtual disk. Confirm the des
 
 
 ![Guided storage layout screen](20_guided_storage_layout.png)
+
 **Fig-20:** Guided storage layout screen.
 
 ![Storage confirmation warning before formatting disk](21_storage_confirmation_warning.png)
+
 **Fig-21:** Storage confirmation warning before formatting disk.
 
 Create your profile: name, server name, username, and password. Skip Ubuntu Pro unless you need it. On the SSH screen, install OpenSSH Server so PuTTY can connect later.
@@ -159,17 +176,20 @@ Create your profile: name, server name, username, and password. Skip Ubuntu Pro 
 
 
 ![Profile setup screen for name, server name, username, and password](22_profile_setup_username_password.png)
+
 **Fig-22:** Profile setup screen for name, server name, username, and password.
 
 
 
 ![Upgrade to Ubuntu Pro screen, skipped](23_skip_ubuntu_pro.png)
+
 **Fig-23:** Upgrade to Ubuntu Pro screen, skipped.
 
 
 
 
 ![SSH setup screen where OpenSSH Server can be installed](24_ssh_setup_openssh_server.png)
+
 **Fig-24:** SSH setup screen where OpenSSH Server can be installed.
 
 Skip optional snaps unless needed. Wait for installation to complete, then reboot. After reboot, disconnect the ISO if VMware still boots into the installer.
@@ -177,22 +197,26 @@ Skip optional snaps unless needed. Wait for installation to complete, then reboo
 
 
 ![Featured server snaps screen, continue without selecting optional snaps](25_featured_server_snaps.png)
+
 **Fig-25:** Featured server snaps screen, continue without selecting optional snaps.
 
 
 
 ![Ubuntu Server installing packages and system components](26_ubuntu_server_installing_packages.png)
+
 **Fig-26:** Ubuntu Server installing packages and system components.
 
 
 
 
 ![Installer finished and ready to reboot](27_installer_finished_ready_to_reboot.png)
+
 **Fig-27:** Installer finished and ready to reboot.
 
 
 
 ![VMware CD/DVD setting after installation; ISO can be disconnected](28_vmware_cd_dvd_disconnect_iso_after_install.png)
+
 **Fig-28:** VMware CD/DVD setting after installation; ISO can be disconnected.
 
 ## 5. First Login and Network/IP Check in Ubuntu
@@ -202,21 +226,25 @@ Log in with the Ubuntu username and password you created. Check the VM IP addres
 
 
 ![Ubuntu terminal showing IP information after installation](29_ubuntu_terminal_ip_information_after_install.png)
+
 **Fig-29:** Ubuntu terminal showing IP information after installation.
 
 
 ![Ubuntu login and first terminal welcome message](30_ubuntu_login_first_terminal_welcome.png)
+
 **Fig-30:** Ubuntu login and first terminal welcome message.
 
 
 
 
 ![Ubuntu terminal showing commands/output for checking IP and SSH/network status](31_ubuntu_terminal_ip_and_ssh_network_status.png)
+
 **Fig-31:** Ubuntu terminal showing commands/output for checking IP and SSH/network status.
 
 
 
 ![Ubuntu terminal with network/IP check; useful before PuTTY connection](33_ubuntu_terminal_network_ip_check_for_putty.png)
+
 **Fig-32:** Ubuntu terminal with network/IP check; useful before PuTTY connection.
 
 ## 6. Download and Configure PuTTY on Windows
@@ -226,6 +254,7 @@ On Windows, open the official PuTTY download page and download PuTTY. After inst
 
 
 ![PuTTY official download page with Download PuTTY highlighted](32_putty_official_download_page.png)
+
 **Fig-33:** PuTTY official download page with Download PuTTY highlighted.
 
 In PuTTY, enter the Ubuntu VM IP address in **Host Name**, keep **Port 22**, choose **SSH**, optionally save the session name, and click **Open**.
@@ -233,6 +262,7 @@ In PuTTY, enter the Ubuntu VM IP address in **Host Name**, keep **Port 22**, cho
 
 
 ![PuTTY Configuration: enter Ubuntu IP, port 22, save session, then Open](34_putty_configuration_ip_port_save_open.png)
+
 **Fig-34:** PuTTY Configuration: enter Ubuntu IP, port 22, save session, then Open.
 
 When the SSH terminal opens, log in with the Ubuntu username and password. The successful login screenshot confirms that PuTTY can access Ubuntu remotely.
@@ -240,12 +270,14 @@ When the SSH terminal opens, log in with the Ubuntu username and password. The s
 
 
 ![PuTTY SSH login screen asking for Ubuntu username/password](35_putty_ssh_login_username_password.png)
+
 **Fig-35:** PuTTY SSH login screen asking for Ubuntu username/password.
 
 
 
 
 ![Successful PuTTY SSH login to Ubuntu terminal](36_successful_putty_ssh_login.png)
+
 **Fig-36:** Successful PuTTY SSH login to Ubuntu terminal.
 
 
