@@ -282,7 +282,7 @@ When the SSH terminal opens, log in with the Ubuntu username and password. The s
 
 **Fig-36:** Successful PuTTY SSH login to Ubuntu terminal.
 
-## 6. Ubuntu install and Wazuh setup.
+## 7. Ubuntu install and Wazuh setup.
 
 ![ubntu gui search](37.png)
 **Fig-37:** Searched for ubuntu vmware file.
