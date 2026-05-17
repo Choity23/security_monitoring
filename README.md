@@ -1,7 +1,7 @@
 # Ubuntu VMware Setup and PuTTY SSH Access And Wazuh setup in ubuntu server
 
 
-## Quick Workflow Overvie
+## Quick Workflow Overview
 
 | No. | Step | What to do |
 | --- | --- | --- |
@@ -296,6 +296,7 @@ When the SSH terminal opens, log in with the Ubuntu username and password. The s
 
 **Fig-40:** used this bash script for install wazuh:
 
+```bash
 #!/bin/bash
 
 set -e
@@ -332,6 +333,7 @@ echo ""
 echo "Default dashboard port: 443"
 echo "Use username: admin"
 echo "========================================"
+```
 
 ![wazuh connection info](41.png)
 
