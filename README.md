@@ -1,7 +1,7 @@
 # Ubuntu VMware Setup and PuTTY SSH Access And Wazuh setup in ubuntu server
 
 
-## Quick Workflow Overview
+## Quick Workflow Overvie
 
 | No. | Step | What to do |
 | --- | --- | --- |
