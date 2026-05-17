@@ -330,14 +330,21 @@ echo "Use username: admin"
 echo "========================================"
 
 ![wazuh connection info](41.png)
+
 **Fig-41:** Got wazuh login pannel credentials.
+
 ![wazuh ip find](42.png)
+
 **Fig-42:** Check for ubuntu ip address.
 ![wazuh web1](43.png)
+
 **Fig-43:** Got wazuh login page.
 ![wazuh web 2](44.png)
+
 **Fig-44:** Opening.
+
 ![wazuh web 3](45.png)
+
 **Fig-45:** Boom!Dashboard comes.
 
 ## Troubleshooting Checklist
