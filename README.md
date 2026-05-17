@@ -368,15 +368,8 @@ echo "========================================"
 
 ![win22](47.png)
 
-**Fig-47:** Got wazuh login page.
-
 ![win3](48.png)
 
-**Fig-48:** Got wazuh login page.
-
-![wazuh web 2](49.png)
-
-**Fig-49:** Got wazuh login page.
 
 ![win4](50.png)
 
