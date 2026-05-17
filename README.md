@@ -34,7 +34,7 @@ Open a browser and search for Ubuntu 22.04 LTS. Use an official Ubuntu release p
 
 From the release directory, download the desktop or server AMD64 ISO file. The screenshots show Ubuntu 22.04.5 LTS AMD64 ISO selected for the VM.
 
-**Screenshot 1:** Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page.
+Fig-1: Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page.
 
 ![Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page](01_ubuntu_google_search_result.png)
 
