@@ -293,7 +293,8 @@ When the SSH terminal opens, log in with the Ubuntu username and password. The s
 
 ![wazuh install code](40.png)
 
-**Fig-40:** Runed this bash script for install wazuh:
+**Fig-40:** used this bash script for install wazuh:
+
 #!/bin/bash
 
 set -e
