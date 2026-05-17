@@ -37,18 +37,22 @@ From the release directory, download the desktop or server AMD64 ISO file. The s
 Fig-1: Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page.
 
 ![Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page](01_ubuntu_google_search_result.png)
+**Fig-1:** Google search result for Ubuntu 22.04 LTS Jammy Jellyfish download page.
 
-**Screenshot 2:** Ubuntu release directory showing the 22.04.5 desktop AMD64 ISO file.
+
+
 
 ![Ubuntu release directory showing the 22.04.5 desktop AMD64 ISO file](02_ubuntu_release_directory_desktop_amd64_iso.png)
+**Fig-2:** Ubuntu release directory showing the 22.04.5 desktop AMD64 ISO file.
 
 ## 2. Create a New Virtual Machine in VMware
 
 Open VMware Workstation Pro and choose **Create a New Virtual Machine**. Select **Typical (recommended)** for a normal Ubuntu installation.
 
-**Screenshot 4:** VMware Workstation Pro home screen before creating the virtual machine.
+
 
 ![VMware Workstation Pro home screen before creating the virtual machine](04_vmware_workstation_home_before_creating_vm.png)
+**Fig-3:** VMware Workstation Pro home screen before creating the virtual machine.
 
 **Screenshot 5:** New Virtual Machine Wizard, Typical configuration selected.
 
