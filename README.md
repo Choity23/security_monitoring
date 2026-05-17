@@ -11,6 +11,7 @@
 | 4 | Install Ubuntu | Language, keyboard, network, storage, user profile, OpenSSH Server, reboot. |
 | 5 | Find IP | Log in to Ubuntu and run `ip a` or `hostname -I` to get the VM IP address. |
 | 6 | PuTTY | Download PuTTY, enter VM IP, SSH port 22, login with Ubuntu credentials. |
+| 7 | Wazuh | Ubuntu GUI setup and Wazuh setup|
 
 ## Useful Ubuntu Commands
 
