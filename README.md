@@ -283,15 +283,60 @@ When the SSH terminal opens, log in with the Ubuntu username and password. The s
 **Fig-36:** Successful PuTTY SSH login to Ubuntu terminal.
 
 ![ubntu gui search](37.png)
+**Fig-37:** Searched for ubuntu vmware file.
 ![download1](38.png)
+**Fig-38:** Now this option.
 ![download2](39.png)
+**Fig-39:** Now click here to download.
 ![wazuh install code](40.png)
-![wazuh connection info](41.png)
-![wazuh ip find](42.png)
-![wazuh web1](43.png)
-![wazuh web 2](44.png)
-![wazuh web 3](45.png)
+**Fig-40:** Runed this bash script for install wazuh:
+#!/bin/bash
 
+set -e
+
+echo "[+] Updating Ubuntu..."
+sudo apt update && sudo apt upgrade -y
+
+echo "[+] Installing required packages..."
+sudo apt install -y curl tar gnupg lsb-release
+
+echo "[+] Checking system resources..."
+echo "Recommended minimum for lab: 4 CPU, 8GB RAM, 50GB storage"
+
+echo "[+] Downloading Wazuh official installer..."
+curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh
+
+echo "[+] Giving execute permission..."
+chmod +x wazuh-install.sh
+
+echo "[+] Installing Wazuh all-in-one..."
+sudo bash ./wazuh-install.sh -a -i
+
+echo ""
+echo "========================================"
+echo "[+] Wazuh installation completed!"
+echo "========================================"
+echo ""
+echo "Open Wazuh Dashboard:"
+echo "https://YOUR_UBUNTU_IP"
+echo ""
+echo "To show generated passwords, run:"
+echo "sudo tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt"
+echo ""
+echo "Default dashboard port: 443"
+echo "Use username: admin"
+echo "========================================"
+
+![wazuh connection info](41.png)
+**Fig-41:** Got wazuh login pannel credentials.
+![wazuh ip find](42.png)
+**Fig-42:** Check for ubuntu ip address.
+![wazuh web1](43.png)
+**Fig-43:** Got wazuh login page.
+![wazuh web 2](44.png)
+**Fig-44:** Opening.
+![wazuh web 3](45.png)
+**Fig-45:** Boom!Dashboard comes.
 
 ## Troubleshooting Checklist
 
