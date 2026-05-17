@@ -288,7 +288,9 @@ When the SSH terminal opens, log in with the Ubuntu username and password. The s
 **Fig-38:** Now this option.
 ![download2](39.png)
 **Fig-39:** Now click here to download.
+
 ![wazuh install code](40.png)
+
 **Fig-40:** Runed this bash script for install wazuh:
 #!/bin/bash
 
