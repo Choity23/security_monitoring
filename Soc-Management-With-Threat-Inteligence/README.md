@@ -38,30 +38,7 @@ SOC Analyst
     `- Collect evidence
 ```
 
-## Repository structure
 
-```text
-wazuh-fim-sca-soc-lab/
-├── README.md
-├── .gitignore
-├── configs/
-│   └── agent.conf
-├── docs/
-│   ├── implementation-notes.md
-│   ├── troubleshooting.md
-│   └── source/
-│       └── wazuh-fim-sca-lab-documentation.docx
-├── screenshots/
-│   └── 16 ordered screenshots from the lab
-└── scripts/
-    ├── linux/
-    │   ├── check-wazuh-services.sh
-    │   ├── configure-windows-agent-group.sh
-    │   └── install-centralized-fim-config.sh
-    └── windows/
-        ├── setup-soc-lab-folders.ps1
-        └── test-fim-events.ps1
-```
 
 ## Requirements
 
