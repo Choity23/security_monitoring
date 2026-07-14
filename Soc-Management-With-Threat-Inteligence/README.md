@@ -2,7 +2,7 @@
 
 An end-to-end Security Operations Center lab for monitoring a Windows endpoint with Wazuh. The project demonstrates centralized agent configuration, real-time File Integrity Monitoring (FIM), alert investigation, evidence collection, and Security Configuration Assessment (SCA).
 
-## Project scope
+## Project Scope
 
 This repository covers:
 
@@ -16,7 +16,7 @@ This repository covers:
 
 > The source document title mentions MISP, but the supplied implementation evidence covers Wazuh FIM and SCA only. MISP integration is listed under future improvements.
 
-## Lab architecture
+## Lab Architecture
 
 ```text
 Windows Endpoint
@@ -38,8 +38,6 @@ SOC Analyst
     `- Collect evidence
 ```
 
-
-
 ## Requirements
 
 - Wazuh Manager, Indexer, and Dashboard running on Ubuntu
@@ -48,7 +46,9 @@ SOC Analyst
 - Administrator PowerShell on Windows
 - A valid Windows Wazuh Agent ID
 
-## 1. Verify Wazuh services and the Windows agent
+## FIM Full Process
+
+### 1. Verify Wazuh Services and the Windows Agent
 
 Run on the Ubuntu Wazuh server:
 
@@ -70,7 +70,7 @@ chmod +x scripts/linux/check-wazuh-services.sh
 ./scripts/linux/check-wazuh-services.sh
 ```
 
-## 2. Create a centralized Windows agent group
+### 2. Create a Centralized Windows Agent Group
 
 Create the `windows-soc` group:
 
@@ -97,7 +97,7 @@ chmod +x scripts/linux/configure-windows-agent-group.sh
 ./scripts/linux/configure-windows-agent-group.sh 001
 ```
 
-## 3. Create the Windows monitoring folders
+### 3. Create the Windows Monitoring Folders
 
 Open PowerShell as Administrator:
 
@@ -116,7 +116,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\windows\setup-soc-lab-folders.ps1
 ```
 
-## 4. Apply the centralized FIM configuration
+### 4. Apply the Centralized FIM Configuration
 
 The configuration monitors the Windows folder in real time and reports file changes:
 
@@ -168,7 +168,7 @@ chmod +x scripts/linux/install-centralized-fim-config.sh
 ./scripts/linux/install-centralized-fim-config.sh
 ```
 
-## 5. Confirm configuration synchronization
+### 5. Confirm Configuration Synchronization
 
 Replace `001` with the Windows Agent ID:
 
@@ -178,7 +178,7 @@ sudo /var/ossec/bin/agent_groups -S -i 001
 
 ![Agent synchronized](screenshots/08-agent-configuration-synchronized.png)
 
-## 6. Restart the Windows Wazuh Agent
+### 6. Restart the Windows Wazuh Agent
 
 Run PowerShell as Administrator:
 
@@ -190,11 +190,11 @@ Get-Service -Name WazuhSvc
 
 ![Windows Wazuh service](screenshots/09-windows-wazuh-service.png)
 
-## 7. Generate FIM test events
+### 7. Generate FIM Test Events
 
 The test creates, modifies, and deletes one file. Wait several seconds between actions so the endpoint agent can send each event.
 
-### File creation
+#### File Creation
 
 ```powershell
 Set-Content -Path "C:\SOC-Lab\Monitored\demo.txt" `
@@ -204,7 +204,7 @@ Start-Sleep -Seconds 5
 
 ![File created alert](screenshots/10-fim-file-created-dashboard.png)
 
-### File modification
+#### File Modification
 
 ```powershell
 Add-Content -Path "C:\SOC-Lab\Monitored\demo.txt" `
@@ -214,7 +214,7 @@ Start-Sleep -Seconds 5
 
 ![File modified alert](screenshots/11-fim-file-modified-dashboard.png)
 
-### File deletion
+#### File Deletion
 
 ```powershell
 Remove-Item "C:\SOC-Lab\Monitored\demo.txt"
@@ -230,7 +230,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\windows\test-fim-events.ps1
 ```
 
-## 8. Review alerts in the Wazuh Dashboard
+### 8. Review Alerts in the Wazuh Dashboard
 
 Open **File Integrity Monitoring**, select the **Events** view, and use a suitable time range such as the last 24 hours.
 
@@ -240,7 +240,7 @@ Use this filter:
 rule.id: is one of 550,553,554
 ```
 
-| Rule ID | Event | Expected description |
+| Rule ID | Event | Expected Description |
 |---:|---|---|
 | `554` | File added | File added to the system |
 | `550` | File modified | Integrity checksum changed |
@@ -250,7 +250,7 @@ rule.id: is one of 550,553,554
 
 ![Deletion event details](screenshots/14-fim-deletion-event-details.png)
 
-## 9. Collect alert evidence
+### 9. Collect Alert Evidence
 
 Open a FIM event and review these fields:
 
@@ -281,9 +281,9 @@ A failed SCA check does not automatically mean the endpoint is compromised. It m
 
 ![Windows 11 SCA results](screenshots/16-windows-11-sca-results.png)
 
-## Test results
+## Test Results
 
-| Test | Observed result | Status |
+| Test | Observed Result | Status |
 |---|---:|---|
 | File creation | Rule `554` | Pass |
 | File modification | Rule `550` | Pass |
@@ -295,7 +295,7 @@ A failed SCA check does not automatically mean the endpoint is compromised. It m
 
 Common problems and fixes are documented in [`docs/troubleshooting.md`](docs/troubleshooting.md).
 
-## Security notes
+## Security Notes
 
 - Use a local Windows path for real-time FIM. Avoid mapped drives and UNC paths for this lab.
 - Validate XML before replacing the active `agent.conf`.
@@ -303,7 +303,7 @@ Common problems and fixes are documented in [`docs/troubleshooting.md`](docs/tro
 - Review failed SCA checks individually. Some recommendations may affect usability or existing services.
 - Do not upload credentials, API keys, private certificates, or access tokens to the repository.
 
-## Future improvements
+## Future Improvements
 
 - Add MISP threat intelligence integration
 - Add automated response and quarantine workflows
@@ -327,7 +327,7 @@ git push -u origin main
 
 Replace `YOUR-USERNAME` with your GitHub username. Add a license before publishing if you want other people to reuse the project.
 
-## Source documentation
+## Source Documentation
 
 The original DOCX used to build this repository is stored at:
 
