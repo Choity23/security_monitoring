@@ -265,7 +265,7 @@ Open a FIM event and review these fields:
 
 ![Alert document fields](screenshots/15-wazuh-alert-document-details.png)
 
-## 10. Security Configuration Assessment
+## 2. Security Configuration Assessment
 
 The Windows endpoint was assessed using the **CIS Microsoft Windows 11 Enterprise Benchmark v3.0.0**.
 
