@@ -1,0 +1,16 @@
+<!-- Add this block before the final </ossec_config> tag in /var/ossec/etc/ossec.conf. -->
+<!-- Never commit a real MISP API key. -->
+<integration>
+  <name>custom-misp_file_hashes.py</name>
+  <hook_url>https://192.168.90.130</hook_url>
+  <api_key>REPLACE_WITH_RESTRICTED_MISP_API_KEY</api_key>
+  <group>syscheck</group>
+  <rule_id>554</rule_id>
+  <alert_format>json</alert_format>
+  <options>{
+    "timeout": 10,
+    "retries": 3,
+    "debug": true,
+    "push_sightings": false
+  }</options>
+</integration>
